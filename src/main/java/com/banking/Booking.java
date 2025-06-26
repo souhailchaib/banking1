@@ -14,4 +14,19 @@ public class Booking {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public Date getCheckIn() {
+        return checkIn;
+    }
+    public Date getCheckOut() {
+        return checkOut;
+    }
 }

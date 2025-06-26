@@ -12,4 +12,22 @@ public class Room {
         this.roomPriceperNight = roomPriceperNight;
     }
 
+    public int getRoomNumber() {
+        return roomNumber;
+    }       
+    public RoomType getRoomType() {
+        return roomType;
+    }   
+    public int getRoomPriceperNight() {
+        return roomPriceperNight;
+    }
+
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
+    }           
+
+    public void setRoomPricePerNight(int roomPriceperNight) {
+        this.roomPriceperNight = roomPriceperNight;
+    }
+
 }

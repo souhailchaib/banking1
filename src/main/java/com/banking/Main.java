@@ -1,18 +1,38 @@
 package com.banking;
+import java.text.SimpleDateFormat;
 
-import java.util.Date;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Service service = new Service();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        service.setUser(1,1000);
-        service.setRoom(101, RoomType.STANDARD_SUITE, 100);
+        service.setRoom(1, RoomType.STANDARD_SUITE, 1000);
+        service.setRoom(2, RoomType.JUNIOR_SUITE, 2000);
+        service.setRoom(3, RoomType.MASTER_SUITE, 3000);
 
-        Date checkIn = new Date();
-        Date checkOut = new Date(checkIn.getTime() + 2 * 24 * 60 * 60 * 1000); // 2 days later
+        service.setUser(1, 5000);
+        service.setUser(2, 10000);
+        
+        System.out.println("User 1 booking Room 2 from 30/06/2026 to 07/07/2026:");
+        service.bookRoom(1, 2, sdf.parse("30/06/2026"), sdf.parse("07/07/2026"));
 
-        service.Booking(1, 101, checkIn, checkOut);
+        System.out.println("User 1 booking Room 2 from 07/07/2026 to 30/06/2026:");
+        service.bookRoom(1, 2, sdf.parse("07/07/2026"), sdf.parse("30/06/2026"));
+
+        System.out.println("User 1 booking Room 1 from 07/07/2026 to 08/07/2026:");
+        service.bookRoom(1, 1, sdf.parse("07/07/2026"), sdf.parse("08/07/2026"));
+
+        System.out.println("User 2 booking Room 1 from 07/07/2026 to 09/07/2026:");
+        service.bookRoom(2, 1, sdf.parse("07/07/2026"), sdf.parse("09/07/2026"));
+
+        System.out.println("User 2 booking Room 3 from 07/07/2026 to 08/07/2026:");
+        service.bookRoom(2, 3, sdf.parse("07/07/2026"), sdf.parse("08/07/2026"));
+
+    
+        System.out.println("Updating Room 1 to suite with price 10000:");
+    
+        service.setRoom(1, RoomType.MASTER_SUITE, 10000);
 
         service.printAll();
         service.printAllUsers();
